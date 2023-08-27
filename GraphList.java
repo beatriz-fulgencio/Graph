@@ -1,12 +1,12 @@
-//implamentation based on video: https://www.youtube.com/watch?v=UhFfdBdHCJM
+//implementation based on video: https://www.youtube.com/watch?v=UhFfdBdHCJM
 
 import java.util.ArrayList;
 
-public class Graph {
+public class GraphList {
     private ArrayList<ArrayList<Integer>> graph;
     private int n; // number of nodes
 
-    public Graph(int n) {
+    public GraphList(int n) {
         this.n = n;
         graph = new ArrayList<ArrayList<Integer>>();
 

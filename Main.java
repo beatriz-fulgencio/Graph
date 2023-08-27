@@ -12,6 +12,10 @@ public class Main {
             System.out.println("Choose the sourse file:\n1: 100 vertexes\n2: 50000 vertexes");
             int type = scn.nextInt();
 
+            System.out
+                    .println("Choose the type of representation of the graph:\n1: Adjacency List\n2: Adjacency Matrix");
+            int typeCode = scn.nextInt();
+
             scn.close();
             Scanner sc;
 
@@ -19,30 +23,54 @@ public class Main {
                 sc = new Scanner(file1);
             } else if (type == 2) {
                 sc = new Scanner(file2);
-            }else{
+            } else {
                 throw new Exception("No such type");
             }
 
             // change the file from 1 to 2 to change the source file
-
-            int n = sc.nextInt();
-            sc.nextLine();
-
-            Graph graphsucc = new Graph(n);
-            Graph graphpred = new Graph(n);
-
-            while (sc.hasNextLine()) {
-                int s = sc.nextInt();
-                int d = sc.nextInt();
-
-                graphsucc.addEdge(s, d);
-                graphpred.addEdge(d, s);
+            if (typeCode == 1) {
+                int n = sc.nextInt();
                 sc.nextLine();
-            }
-            sc.close();
 
-            graphsucc.GreatestDegree("Greatest out-degree");
-            graphpred.GreatestDegree("Greatest in-degree");
+                GraphList graphsucc = new GraphList(n);
+                GraphList graphpred = new GraphList(n);
+
+                while (sc.hasNextLine()) {
+                    int s = sc.nextInt();
+                    int d = sc.nextInt();
+
+                    graphsucc.addEdge(s, d);
+                    graphpred.addEdge(d, s);
+                    sc.nextLine();
+                }
+                sc.close();
+
+                graphsucc.GreatestDegree("Greatest out-degree");
+                graphpred.GreatestDegree("Greatest in-degree");
+            } else if (typeCode == 2) {
+                int n = sc.nextInt();
+                sc.nextLine();
+
+                GraphMatrix graph = new GraphMatrix(n);
+
+                while (sc.hasNextLine()) {
+                    int s = sc.nextInt();
+                    int d = sc.nextInt();
+
+                    graph.addEdge(s, d);
+                    sc.nextLine();
+                }
+                sc.close();
+
+                graph.GreatestOutDegree();
+                graph.GreatestInDegree();
+            } else {
+                sc.close();
+
+                throw new Exception("No such type");
+
+            }
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
