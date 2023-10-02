@@ -1,3 +1,4 @@
+package Representation;
 
 public class GraphMatrix {
     private boolean[][] matrix;
