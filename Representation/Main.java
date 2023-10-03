@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         try {
-            File file1 = new File("graph-test-100-2.txt");
-            File file2 = new File("graph-test-50000-2.txt");
+            File file1 = new File("./graph-test-100-2.txt");
+            File file2 = new File("./graph-test-50000-2.txt");
 
             Scanner scn = new Scanner(System.in);
             System.out.println("Choose the sourse file:\n1: 100 vertexes\n2: 50000 vertexes");
