@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
@@ -33,11 +34,12 @@ public class Main {
             graph.addEdge(s, d);
             fileSc.nextLine();
         }
-
-        ArrayList<String> arestas = graph.seach(vertex);
+        graph.sortNodes();
+        Stack<String> arestas = graph.seach(vertex);
        for(int i=0;i<arestas.size();i++){
         System.out.println(arestas.get(i));
        }
+       
        fileSc.close();
 
     }

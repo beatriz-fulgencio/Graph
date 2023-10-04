@@ -1,7 +1,10 @@
 package Search;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Node {
      int element;
@@ -9,9 +12,9 @@ public class Node {
     int TD;
     int TT;
     Node father;
-    LinkedList<Node> adjacent = new LinkedList<Node>();
+    ArrayList<Node> adjacent = new ArrayList<Node>();
     
-    ArrayList<String> arestas =new ArrayList<String>();
+    Stack<String> arestas =new Stack<String>();
 
 
     Node(int e){
@@ -22,4 +25,14 @@ public class Node {
         father=null;
     }
     
+    public void sortAdjacent(){
+       adjacent.sort(new Comparator<Node>() {
+        @Override
+        public int compare(Node o1, Node o2) {
+            if (o1.element ==o2.element ) return 0;
+            if(o1.element > o2.element ) return 1;
+            return -1;
+        }
+       });
+    }
 }
