@@ -12,6 +12,8 @@ public class Graph {
     int n;
     int t;
     // private boolean[] marked;
+    Stack<String> edges =new Stack<String>();
+
 
     public Graph(int n) {
         this.n = n;
@@ -26,7 +28,7 @@ public class Graph {
     }
 
     public Stack<String> seach(int vertex) {
-        t = 0;
+        t = 1;
         Vector<VisitedNode> visited = new Vector<VisitedNode>(n);
 
         for (int i = 0; i < n; i++)
@@ -34,12 +36,17 @@ public class Graph {
 
         for (int i = 0; i < n; i++) {
             if (graph.get(i).TD == 0) {
+                graph.get(i).TD =t;
                 DFS(graph.get(i), graph.get(vertex));
                 //nonRecursiveDFS(graph.get(i), visited);
             }
         }
+        edges.push("-----");
+        for(String s : graph.get(vertex - 1).arestas){
+            edges.push(s);
+        }
 
-        return graph.get(vertex - 1).arestas;
+        return edges;
 
     }
 
@@ -102,6 +109,7 @@ public class Graph {
                 v.father = node;
                 v.TD = t;
                 node.arestas.add(node.element + "->" + v.element + ":arvore");
+                edges.push(node.element + "->" + v.element + ":arvore");
 
                 if (t > 15430) {
                     System.out.println("hello");
