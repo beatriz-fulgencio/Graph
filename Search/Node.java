@@ -21,6 +21,5 @@ public class Node {
         visited=false;
         father=null;
     }
-
     
 }

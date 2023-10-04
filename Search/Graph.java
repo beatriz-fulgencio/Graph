@@ -41,16 +41,20 @@ public class Graph {
                 v.father = node;
                 v.TD = t;
                 node.arestas.add(node.element + "->" + v.element + ":arvore");
+                
+                if(t>15430){
+                    System.out.println("hello");
+                }
                 DFS(v);
             } else if (v.TT == 0) {
                 node.arestas.add(node.element + "->" + v.element + ":retorno");
             } else {
                 if (node.TD < v.TD) {
                     node.arestas.add(node.element + "->" + v.element + ":avanço");
-                    ;// avanco
+                    // avanco
                 } else {
                     node.arestas.add(node.element + "->" + v.element + ":cruzamento");
-                    ;// cruz
+                    // cruz
                 }
             }
         }
